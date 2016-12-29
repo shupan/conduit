@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="bootstrap/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <testsuites>
+        <testsuite name="Application Test Suite">
+            <!-- 业务测试 -->
+            <directory>./tests/</directory>
+            <directory>./app/Services/Notice/__tests__/</directory>
+            <directory>./app/Notifications/__tests__/</directory>
+            <directory>./app/Console/Commands/__tests__/</directory>
+
+            <!-- 框架测试 -->
+            <!--<directory>./app/Helpers/__tests__/Support/</directory>-->
+            <!--<directory>./app/Helpers/__tests__/Encryption/</directory>-->
+            <!--<directory>./app/Helpers/__tests__/Console/</directory>-->
+            <!--<directory>./app/Helpers/__tests__/Filesystem/</directory>-->
+            <!--<directory>./app/Helpers/__tests__/Http/</directory>-->
+            <!--<directory>./app/Helpers/__tests__/Encryption/</directory>-->
+            <!--<directory>./app/Helpers/__tests__/Log/</directory>-->
+            <directory>./app/Helpers/__tests__/Cookie/</directory>
+            <directory>./app/Helpers/__tests__/Cache/</directory>
+            <directory>./app/Helpers/__tests__/Mail/</directory>
+            <directory>./app/Helpers/__tests__/Notifications/</directory>
+            <directory>./app/Helpers/__tests__/Queue/</directory>
+            <directory>./app/Helpers/__tests__/Redis/</directory>
+            <directory>./app/Helpers/__tests__/Routing/</directory>
+            <directory>./app/Helpers/__tests__/Session/</directory>
+            <directory>./app/Helpers/__tests__/Support/</directory>
+            <directory>./app/Helpers/__tests__/Validation/</directory>
+            <directory>./app/Helpers/__tests__/Auth/</directory>
+            <!--<directory>./app/Helpers/__tests__/Database/</directory>-->
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./app</directory>
+        </whitelist>
+    </filter>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="QUEUE_DRIVER" value="sync"/>
+        <env name="DB_DATABASE" value="ad"/>
+        <env name="DB_USER" value="root"/>
+        <env name="DB_PASS" value=""/>
+    </php>
+</phpunit>
