@@ -48,6 +48,7 @@ class AdFields extends AbstractEnum {
   const CAMPAIGN = 'campaign';
   const CAMPAIGN_ID = 'campaign_id';
   const CONFIGURED_STATUS = 'configured_status';
+  const TARGETING = 'targeting';
   const CONVERSION_SPECS = 'conversion_specs';
   const CREATED_TIME = 'created_time';
   const CREATIVE = 'creative';
@@ -78,6 +79,7 @@ class AdFields extends AbstractEnum {
       'campaign' => 'Campaign',
       'campaign_id' => 'string',
       'configured_status' => 'ConfiguredStatus',
+      'targeting' => 'string',
       'conversion_specs' => 'list<ConversionActionQuery>',
       'created_time' => 'datetime',
       'creative' => 'AdCreative',

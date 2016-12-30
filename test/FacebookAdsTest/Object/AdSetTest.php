@@ -45,6 +45,7 @@ class AdSetTest extends AbstractCrudObjectTestCase {
     $this->campaign = new Campaign(null, $this->getConfig()->accountId);
     $this->campaign->{CampaignFields::NAME}
       = $this->getConfig()->testRunId;
+    $this->campaign->{CampaignFields::OBJECTIVE} = 'LINK_CLICKS';
     $this->campaign->create();
   }
 

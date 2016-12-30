@@ -27,10 +27,12 @@ namespace FacebookAdsTest\Object;
 use FacebookAds\Object\AdImage;
 use FacebookAds\Object\AdCreative;
 use FacebookAds\Object\Ad;
+use FacebookAds\Object\AdPromotedObject;
 use FacebookAds\Object\AdSet;
 use FacebookAds\Object\Campaign;
 use FacebookAds\Object\AdAccount;
 use FacebookAds\Object\Fields\AdImageFields;
+use FacebookAds\Object\Fields\AdPromotedObjectFields;
 use FacebookAds\Object\TargetingSpecs;
 use FacebookAds\Object\Fields\AdPreviewFields;
 use FacebookAds\Object\Fields\AdCreativeFields;
@@ -81,17 +83,21 @@ class AdPreviewTest extends AbstractCrudObjectTestCase
   public function setup() {
     parent::setup();
 
+    dd("This class is not finish ~ ");
     $targeting = new TargetingSpecs();
     $targeting->{TargetingSpecsFields::GEO_LOCATIONS}
       = array('countries' => array('US'));
 
     $this->campaign = new Campaign(null, $this->getConfig()->accountId);
-    $this->campaign->{CampaignFields::NAME} = $this->getConfig()->testRunId;
+    $this->campaign->{CampaignFields::NAME} = 'Test'.date('Y-m-d').$this->getConfig()->testRunId;
+    $this->campaign->{CampaignFields::OBJECTIVE} = 'REACH';
+    //$this->campaign->{CampaignFields::BUYING_TYPE} = 'AUCTION';
+    $this->campaign->{CampaignFields::CONFIGURED_STATUS} = 'PAUSED';
     $this->campaign->create();
 
     $this->adSet = new AdSet(null, $this->getConfig()->accountId);
     $this->adSet->{AdSetFields::CAMPAIGN_ID}
-      = (int) $this->campaign->{AdSetFields::ID};
+      =  $this->campaign->{AdSetFields::ID};
     $this->adSet->{AdSetFields::NAME} = $this->getConfig()->testRunId;
     $this->adSet->{AdSetFields::DAILY_BUDGET} = '150';
     $this->adSet->{AdSetFields::START_TIME}
@@ -102,6 +108,11 @@ class AdPreviewTest extends AbstractCrudObjectTestCase
     $this->adSet->{AdSetFields::OPTIMIZATION_GOAL} = OptimizationGoals::REACH;
     $this->adSet->{AdSetFields::BILLING_EVENT} = BillingEvents::IMPRESSIONS;
     $this->adSet->{AdSetFields::BID_AMOUNT} = 2;
+
+//    $promotedObject = new AdPromotedObject();
+//    $promotedObject->{AdPromotedObjectFields::APPLICATION_ID} = '757424584371600';
+//    $promotedObject->{AdPromotedObjectFields::OBJECT_STORE_URL} = 'http://play.google.com/store/apps/details?id=com.flylnc.flynews';
+//    $this->adSet->{AdSetFields::PROMOTED_OBJECT} = $promotedObject;
     $this->adSet->create(array(
       AdSet::STATUS_PARAM_NAME => AdSet::STATUS_PAUSED,
     ));
@@ -123,12 +134,13 @@ class AdPreviewTest extends AbstractCrudObjectTestCase
     $this->ad = new Ad(null, $this->getConfig()->accountId);
     $this->ad->{AdFields::NAME} = $this->getConfig()->testRunId;
     $this->ad->{AdFields::ADSET_ID}
-      = (int) $this->adSet->{AdSetFields::ID};
+      = $this->adSet->{AdSetFields::ID};
     $this->ad->{AdFields::CREATIVE}
       = array('creative_id' => $this->adCreative->{AdCreativeFields::ID});
     $this->ad->create(array(
       Ad::STATUS_PARAM_NAME => Ad::STATUS_PAUSED,
     ));
+
   }
 
   public function tearDown() {
