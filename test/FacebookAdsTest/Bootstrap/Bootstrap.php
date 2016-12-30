@@ -134,6 +134,7 @@ class Bootstrap {
         $this->config->appSecret = $configData['app_secret'];
         $this->config->accessToken = $configData['access_token'];
         $this->config->pageId = $configData['page_id'];
+        $this->config->appUrl = $configData['app_url'];
       }
       $this->config->testRunId
         = md5($this->idx($_SERVER, 'LOGNAME', uniqid(true)).microtime(true));

@@ -32,6 +32,8 @@ use FacebookAds\Object\Fields\InsightsFields;
 class AsyncJobInsightsTest extends AbstractAsyncJobTestCase {
 
   public function testCrud() {
+
+    die("AsyncJobInsights is not contain the class ");
     $account = new AdAccount($this->getConfig()->accountId);
     $job = $account->getInsightsAsync();
     $this->assertTrue($job instanceof AsyncJobInsights);

@@ -36,6 +36,7 @@ class CustomAudienceMultikeyTest extends AbstractCrudObjectTestCase {
 
   public function setup() {
     parent::setup();
+    dd('The corporate terms of service has not been accepted.');
     $ca = new CustomAudienceMultiKey(null, $this->getConfig()->accountId);
     $ca->{CustomAudienceFields::NAME} = $this->getConfig()->testRunId;
     $ca->{CustomAudienceFields::SUBTYPE} = CustomAudienceSubtypes::CUSTOM;

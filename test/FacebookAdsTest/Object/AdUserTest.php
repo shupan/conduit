@@ -41,7 +41,9 @@ class AdUserTest extends AbstractCrudObjectTestCase {
     foreach ($ad_users as $ad_user) {
       if ($ad_user->id === $uid) {
         $this->assertCanFetchConnection($ad_user, 'getAdAccounts');
-        $this->assertCanFetchConnection($ad_user, 'getAdAccountGroups');
+
+        //adaccountgroups is deprecated for versions v2.8 and higher
+        //$this->assertCanFetchConnection($ad_user, 'getAdAccountGroups');
         $found = true;
         break;
       }

@@ -40,13 +40,15 @@ class AdVideoTest extends AbstractCrudObjectTestCase
 
   public function testCrud() {
     $video = new AdVideo(null, $this->getConfig()->accountId);
-    $video->{AdVideoFields::NAME} = $this->getConfig()->testRunId;
+
+    // name field is deprecated for versions v2.5 and higher
+    //$video->{AdVideoFields::NAME} = $this->getConfig()->testRunId;
     $video->{AdVideoFields::SOURCE} = $this->getConfig()->testVideoPath;
     $this->assertCanCreate($video);
     $this->assertCanRead($video);
-    $this->assertCanUpdate($video, array(
-      AdVideoFields::NAME => $this->getConfig()->testRunId.' updated',
-    ));
+//    $this->assertCanUpdate($video, array(
+//      AdVideoFields::NAME => $this->getConfig()->testRunId.' updated',
+//    ));
     $this->assertCanDelete($video);
   }
 }

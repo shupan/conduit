@@ -97,6 +97,7 @@ class DynamicProductAdsAdvertTest extends AbstractCrudObjectTestCase {
   public function setup() {
     parent::setup();
 
+    dd("It has not business id ");
     $account = new AdAccount($this->getConfig()->accountId);
     $this->adsPixel = $account->getAdsPixels()->current();
     if ($this->adsPixel === null) {

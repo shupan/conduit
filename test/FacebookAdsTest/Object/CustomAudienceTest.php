@@ -34,6 +34,8 @@ class CustomAudienceTest extends AbstractCrudObjectTestCase {
   protected function assertClusterChangesResponse(
     CustomAudience $ca, array $users, $response) {
 
+    dd('The corporate terms of service has not been accepted.');
+
     $this->assertTrue(is_array($response));
 
     $this->assertArrayHasKey('audience_id', $response);

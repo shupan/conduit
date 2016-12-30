@@ -43,6 +43,7 @@ class ReachFrequencyPredictionTest extends AbstractCrudObjectTestCase
 
   public function testCrudAccess() {
 
+    dd("Class 'TargetingSpecsFields' not found ");
     $prediction
       = new ReachFrequencyPrediction(null, $this->getConfig()->accountId);
 

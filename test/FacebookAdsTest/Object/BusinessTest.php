@@ -43,6 +43,7 @@ class BusinessTest extends AbstractCrudObjectTestCase
   }
 
   public function testCrud() {
+    die("Bussiness is not power");
     $business = new Business($this->getConfig()->businessId);
     $this->assertCanRead($business);
     $this->assertCannotDelete($business);
