@@ -1,0 +1,14 @@
+# 前端依赖库
+node_modules
+
+# Logs
+#/application/logs
+
+*.log
+.idea
+.settings
+environment.txt
+
+#去掉存储库
+/storage
+/vendor
